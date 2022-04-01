@@ -1,0 +1,5 @@
+
+
+*  https://devzone.nordicsemi.com/guides/cellular-iot-guides/b/hardware-design/posts/measuring-psm-idle-current-on-the-nrf91-dk
+
+
