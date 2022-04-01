@@ -1,0 +1,22 @@
+manifest:
+  remotes:
+    - name: nrfconnect
+      url-base: https://github.com/nrfconnect
+  projects:
+    - name: nrf 
+      repo-path: sdk-nrf
+      remote: nrfconnect
+      revision: v1.6.1
+      import: true 
+## 2021-10-28 - contributor Ted removing Kionix out-of-Zephyr-tree driver dependency:
+##    # Drivers repository
+##    - name: zephyr-driver-work-v2
+##      path: kionix-drivers
+##      revision: sensor-configuration-routines-work-001
+##      url: git@github.com:tedhavelka/zephyr-driver-work-v2
+  self:
+    # This repository should be cloned to 
+    path: zephyr-low-power-tests
+
+# Ted noting that above path in manifest 'self' section does not seem to impact
+# `west` updates or project build-ability regardless of name choice there.
