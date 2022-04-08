@@ -30,3 +30,7 @@ target_sources(app PRIVATE src/main.c)
 #include_directories(../zephyr/subsys/net/lib/sockets)
 #include_directories(../zephyr/subsys)
 
+
+include_directories(../rfxlib/nrf_modem/include)
+
+

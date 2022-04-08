@@ -12,6 +12,9 @@ LOG_MODULE_REGISTER(app);
 //#include <device.h>
 #include <drivers/gpio.h>          // to provide GPIO_OUTPUT_ACTIVE, gpio_pin_set() and related
 
+//#include <nrfxlib/nrf_modem/include/nrf_modem.h>
+#include <nrf_modem.h>
+
 
 
 
@@ -19,7 +22,7 @@ LOG_MODULE_REGISTER(app);
 // - SECTION - defines
 // ---------------------------------------------------------------------
 
-#define SLEEP_PERIOD_THREAD_MAIN_IN_MS 2000
+#define SLEEP_PERIOD_THREAD_MAIN_IN_MS 30000
 
 
 //
@@ -102,24 +105,23 @@ void main(void)
 
         rstatus = app_config__configure_line__led0();
 
-	while (1) {
-		for ( int a = 100; a > 0; a-- )
-		{
-			printk("printk zztop\n");
-			LOG_ERR("log");
-		}
+	while (1)
+	{
 
+#if 0
 		if ( led_state == true )
-		{
-                	led_state = false;
-		}
+			{ led_state = false; }
 		else
-		{
-                	led_state = true;
-		}
-               	rstatus = gpio_pin_set(dev_led0_green, LED0_PIN, led_state);
+			{ led_state = true; }
 
-//		k_sleep(K_MSEC(1000));
+               	rstatus = gpio_pin_set(dev_led0_green, LED0_PIN, led_state);
+#endif
+
+               	rstatus = gpio_pin_set(dev_led0_green, LED0_PIN, true);
+		k_sleep(K_MSEC(50));
+               	rstatus = gpio_pin_set(dev_led0_green, LED0_PIN, false);
+
+
 		k_sleep(K_MSEC(SLEEP_PERIOD_THREAD_MAIN_IN_MS));
 	}
 }
